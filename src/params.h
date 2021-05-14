@@ -60,6 +60,7 @@ public:
   bool talkless = false;  // default: verbose
   bool matrixMode = false;  // default: original rtl-power-fftw output format
   int finalfreq = 0;
+  int direct_sampling = 0;
   std::string matrix_file;  // just name without extension
   std::string bin_file; // name with .bin extension
   std::string freq_file; // name with .frq extension

@@ -69,6 +69,16 @@ std::vector<int> Rtlsdr::gains() const {
   return gains;
 }
 
+uint32_t Rtlsdr::direct_sampling() const {
+  uint32_t direct_sampling = rtlsdr_get_direct_sampling(dev);
+  if (direct_sampling != 0 && direct_sampling != 1 && direct_sampling != 2) {
+    throw RPFexception(
+      "RTL device: could not read direct sampling.",
+      ReturnValue::HardwareError);
+  }
+  return direct_sampling;
+}
+
 uint32_t Rtlsdr::sample_rate() const {
   uint32_t sample_rate = rtlsdr_get_sample_rate(dev);
   if (sample_rate == 0) {
@@ -104,6 +114,14 @@ void Rtlsdr::set_gain(int gain) {
   if (status != 0) {
     throw RPFexception(
       "RTL device: could not set gain.",
+      ReturnValue::HardwareError);
+  }
+}
+
+void Rtlsdr::set_direct_sampling(int direct_sampling) {
+  if (rtlsdr_set_direct_sampling(dev, direct_sampling)) {
+    throw RPFexception(
+      "RTL device: could not set direct sampling.",
       ReturnValue::HardwareError);
   }
 }

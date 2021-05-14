@@ -81,6 +81,11 @@ int main(int argc, char **argv)
               << " (" << 0.1*gain << " dB)" << std::endl;
     rtldev.set_gain(gain);
 
+    // Set direct sampling
+    rtldev.set_direct_sampling(params.direct_sampling);
+    int direct_sampling = rtldev.direct_sampling();
+    std::cerr << "Actual direct sampling: " << direct_sampling << std::endl;
+
     // Temporarily set the frequency to params.cfreq, just so that the device does not
     // complain upon setting the sample rate. If this fails, it's not a big deal:
     // the sample rate will be read out just fine, but librtlsdr _might_ print an

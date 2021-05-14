@@ -113,6 +113,8 @@ Params::Params(int argc, char** argv) {
     cmd.add( arg_bufferlen );
     TCLAP::ValueArg<int> arg_rate("r","rate","Sample rate of the receiver.",false,sample_rate,"samples/s");
     cmd.add( arg_rate );
+    TCLAP::ValueArg<int> arg_direct_sampling("D","direct-sampling","Direct sampling of the receiver.",false,direct_sampling,"0=NO,1=I,2=Q");
+    cmd.add( arg_direct_sampling );
     TCLAP::SwitchArg arg_quiet("q","quiet","Limit verbosity.", talkless);
     cmd.add( arg_quiet );
     TCLAP::ValueArg<int> arg_ppm("p","ppm","Set custom ppm error in RTL-SDR device.", false, ppm_error, "ppm");
@@ -156,6 +158,7 @@ Params::Params(int argc, char** argv) {
     linear = arg_linear.getValue();
     gain = arg_gain.getValue();
     sample_rate = arg_rate.getValue();
+    direct_sampling = arg_direct_sampling.getValue();
     buffers = arg_buffers.getValue();
     buf_length = arg_bufferlen.getValue();
     endless = arg_continue.getValue();

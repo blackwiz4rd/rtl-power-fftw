@@ -35,12 +35,14 @@ public:
 
   // Reading parameters & data.
   std::vector<int> gains() const;
+  uint32_t direct_sampling() const;
   uint32_t sample_rate() const;
   uint32_t frequency() const ;
   bool read(Buffer& buffer) const;
 
   // Parameter setting.
   void set_gain(int gain);
+  void set_direct_sampling(int direct_sampling);
   void set_frequency(uint32_t frequency);
   void set_freq_correction(int ppm_error);
   void set_sample_rate(uint32_t sample_rate);
