@@ -65,6 +65,9 @@ The program can be stopped gracefully by sending the SIGINT signal to it (pressi
 `-r <Hz>`,  `--rate <Hz>`
 :   Sample rate of the receiver in Hz.
 
+`-D <int>`,  `--diret-sampling <0,1,2>`
+:   Set direct sampling (0=NO,1=I,2=Q).
+
 `-s <bytes>`,  `--buffer-size <bytes>`
 :   Size of the read buffers (leave it as it is unless you know what you are doing).
 
